@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELISIR - Perfumería Original</title>
+    <title>APEX GOLD</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -511,7 +511,7 @@
 
     <!-- HERO SECTION (ESTILO FOTO 1 - RECUADRO REMOVIDO) -->
     <section class="hero">
-        <div class="hero-subtitle">Perfumería Original</div>
+        <div class="hero-subtitle">Somos Fabricantes</div>
         <h1 class="hero-title">HAZ QUE TE RECUERDEN.</h1>
         <p class="hero-desc">Fragancias 100% originales con envío gratis a toda Venezuela.</p>
         
@@ -528,7 +528,7 @@
         </div>
         <div class="badge-item">
             <i class="fa-solid fa-truck"></i>
-            <span>ENVÍO GRATIS</span>
+            <span>ENVÍOS POR MRW</span>
         </div>
         <div class="badge-item">
             <i class="fa-solid fa-shield-halved"></i>
@@ -575,7 +575,7 @@
     <!-- SCRIPT TASA AUTOMÁTICA Y PRODUCTOS -->
     <script>
         // Configuración de WhatsApp
-        const WHATSAPP_PHONE = "584123456789"; // Cambia este número por tu WhatsApp
+        const WHATSAPP_PHONE = "584126012186"; // Cambia este número por tu WhatsApp
 
         // Datos de productos
         const productsData = [
@@ -656,7 +656,7 @@
                 const priceVES = (product.priceUSD * currentBCVRate).toFixed(2);
                 
                 // Texto codificado para URL de WhatsApp
-                const textWS = encodeURIComponent(`Hola, quiero pedir el producto: *${product.name}* (${product.size}) por un precio de $${product.priceUSD.toFixed(2)} / Bs. ${priceVES}`);
+                const textWS = encodeURIComponent(`Hola Alfredo, quiero pedir el producto: *${product.name}* (${product.size}) por un precio de $${product.priceUSD.toFixed(2)} / Bs. ${priceVES}`);
                 const linkWS = `https://wa.me/${WHATSAPP_PHONE}?text=${textWS}`;
 
                 const cardHTML = `
@@ -673,7 +673,7 @@
                         
                         <div class="tags-container">
                             <span class="pill-tag">${product.size}</span>
-                            <span class="pill-tag">ENVÍO GRATIS</span>
+                            <span class="pill-tag">ENVÍO POR MRW</span>
                         </div>
 
                         <div class="price-container">
