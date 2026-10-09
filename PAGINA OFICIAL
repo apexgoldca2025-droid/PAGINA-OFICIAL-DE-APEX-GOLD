@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELISIR - Perfumería Original</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GENERALES Y VARIABLES --- */
+        :root {
+            --bg-dark: #070B12;
+            --bg-navy: #0B1626;
+            --accent-gold: #C5A059;
+            --text-white: #FFFFFF;
+            --text-muted: #8E9BAE;
+            --card-bg: #FFFFFF;
+            --border-color: #E2E8F0;
+            --bcv-green: #10B981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+
+        /* --- TOP ANNOUNCEMENT BAR --- */
+        .top-bar {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 7px 15px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #000000;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .brand-logo {
+            font-family: 'Cinzel', serif;
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .header-actions i {
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION (FOTO 1 - SIN EL RECUADRO "TU PRÓXIMA FRAGANCIA") --- */
+        .hero {
+            background: linear-gradient(180deg, #050B14 0%, #0D203B 60%, #112847 100%);
+            color: white;
+            padding: 40px 20px 20px 20px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-subtitle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #A0AEC0;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            max-width: 320px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: #CBD5E1;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            max-width: 340px;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6));
+        }
+
+        /* --- TRUST BADGES --- */
+        .trust-badges {
+            background-color: #FFFFFF;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #0F172A;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 0 4px;
+        }
+
+        .badge-item i {
+            font-size: 16px;
+            color: #0F172A;
+        }
+
+        /* --- TASA BCV BANNER (AUTOMÁTICA) --- */
+        .bcv-banner-container {
+            max-width: 1000px;
+            margin: 25px auto 10px auto;
+            padding: 0 20px;
+        }
+
+        .bcv-card {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            border-radius: 14px;
+            padding: 16px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .bcv-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bcv-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #94A3B8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .bcv-status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--bcv-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--bcv-green);
+        }
+
+        .bcv-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #FFFFFF;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .bcv-currency {
+            font-size: 13px;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .bcv-date {
+            font-size: 10px;
+            color: #64748B;
+        }
+
+        .bcv-refresh-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .bcv-refresh-btn:active {
+            transform: scale(0.92);
+        }
+
+        /* --- SECCIÓN PRODUCTOS (FOTO 2) --- */
+        .products-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 16px 60px 16px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 6px;
+        }
+
+        .title-underline {
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 0 auto 30px auto;
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        @media (min-width: 640px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* CARD DE PRODUCTO FUERTE Y FIEL A FOTO 2 */
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .img-wrapper {
+            background-color: #F8FAFC;
+            border-radius: 12px;
+            width: 100%;
+            padding-top: 100%; /* Aspect Ratio 1:1 */
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .img-wrapper:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94A3B8;
+            font-size: 13px;
+            cursor: pointer;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .badge-tester {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #000000;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0F172A;
+            margin: 12px 0 8px 0;
+            line-height: 1.3;
+            height: 34px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tags-container {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill-tag {
+            background-color: #000000;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .price-usd {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0F172A;
+        }
+
+        .badge-bcv-tag {
+            border: 1px solid #CBD5E1;
+            color: #64748B;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        .price-ves {
+            font-size: 11px;
+            font-weight: 600;
+            color: #10B981;
+            margin-bottom: 10px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 9px;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1EBE5D;
+        }
+
+        /* --- LIGHTBOX MODAL DE FOTOS --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        ENVÍO GRATIS A TODA VENEZUELA
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <button class="nav-btn"><i class="fa-solid fa-bars"></i></button>
+        <a href="#" class="brand-logo">ELISIR</a>
+        <div class="header-actions">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (ESTILO FOTO 1 - RECUADRO REMOVIDO) -->
+    <section class="hero">
+        <div class="hero-subtitle">Perfumería Original</div>
+        <h1 class="hero-title">HAZ QUE TE RECUERDEN.</h1>
+        <p class="hero-desc">Fragancias 100% originales con envío gratis a toda Venezuela.</p>
+        
+        <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800" alt="Perfumes Elisir" class="hero-img">
+        </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <div class="trust-badges">
+        <div class="badge-item">
+            <i class="fa-regular fa-circle-check"></i>
+            <span>100% ORIGINALES</span>
+        </div>
+        <div class="badge-item">
+            <i class="fa-solid fa-truck"></i>
+            <span>ENVÍO GRATIS</span>
+        </div>
+        <div class="badge-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>COMPRA SEGURA</span>
+        </div>
+    </div>
+
+    <!-- BANNER DE TASA BCV OFICIAL AUTOMÁTICA -->
+    <div class="bcv-banner-container">
+        <div class="bcv-card">
+            <div class="bcv-info">
+                <div class="bcv-header">
+                    <span class="bcv-status-dot"></span>
+                    <span>Tasa Oficial BCV del Día</span>
+                </div>
+                <div class="bcv-price">
+                    <span id="bcv-rate-value">Cargando...</span>
+                    <span class="bcv-currency">VES / USD</span>
+                </div>
+                <div class="bcv-date" id="bcv-updated-date">Actualizando en vivo...</div>
+            </div>
+            <button class="bcv-refresh-btn" onclick="fetchBCVRate()" title="Actualizar Tasa">
+                <i class="fa-solid fa-arrows-rotate" id="refresh-icon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE PRODUCTOS (ESTILO FOTO 2) -->
+    <section class="products-section">
+        <h2 class="section-title">Más vendidos</h2>
+        <div class="title-underline"></div>
+
+        <div class="products-grid" id="products-container">
+            <!-- Los productos se procesan dinámicamente con JS -->
+        </div>
+    </section>
+
+    <!-- MODAL PARA VISUALIZAR IMAGEN -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- SCRIPT TASA AUTOMÁTICA Y PRODUCTOS -->
+    <script>
+        // Configuración de WhatsApp
+        const WHATSAPP_PHONE = "584123456789"; // Cambia este número por tu WhatsApp
+
+        // Datos de productos
+        const productsData = [
+            {
+                id: 1,
+                name: "Cookies & Cream Tubbees",
+                size: "50 ml",
+                priceUSD: 17.41,
+                isTester: false,
+                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400"
+            },
+            {
+                id: 2,
+                name: "Pride Eternal Vanille Lattafa",
+                size: "100 ml",
+                priceUSD: 44.11,
+                isTester: false,
+                image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=400"
+            },
+            {
+                id: 3,
+                name: "Red Jeans Tester Versace",
+                size: "75 ml",
+                priceUSD: 29.02,
+                isTester: true,
+                image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=400"
+            },
+            {
+                id: 4,
+                name: "Valhalla Rayhaan",
+                size: "100 ml",
+                priceUSD: 44.11,
+                isTester: false,
+                image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=400"
+            }
+        ];
+
+        let currentBCVRate = 36.50; // Valor fallback por defecto
+
+        // Función para consultar la Tasa BCV automáticamente desde API
+        async function fetchBCVRate() {
+            const rateElem = document.getElementById('bcv-rate-value');
+            const dateElem = document.getElementById('bcv-updated-date');
+            const refreshIcon = document.getElementById('refresh-icon');
+
+            refreshIcon.classList.add('fa-spin');
+
+            try {
+                // Endpoint público para obtener la tasa BCV oficial
+                const response = await fetch('https://ve.dolarapi.com/v1/dolares/oficial');
+                if (!response.ok) throw new Error('Error al conectar con el servidor');
+                
+                const data = await response.json();
+                
+                if (data && data.promedio) {
+                    currentBCVRate = parseFloat(data.promedio);
+                    rateElem.innerText = `Bs. ${currentBCVRate.toFixed(2)}`;
+                    
+                    const now = new Date();
+                    dateElem.innerText = `Actualizado: ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                }
+            } catch (error) {
+                console.log('Usando tasa de respaldo:', error);
+                rateElem.innerText = `Bs. ${currentBCVRate.toFixed(2)}`;
+                dateElem.innerText = 'Tasa de referencia oficial';
+            } finally {
+                refreshIcon.classList.remove('fa-spin');
+                renderProducts();
+            }
+        }
+
+        // Función para renderizar el catálogo de productos
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            productsData.forEach(product => {
+                const priceVES = (product.priceUSD * currentBCVRate).toFixed(2);
+                
+                // Texto codificado para URL de WhatsApp
+                const textWS = encodeURIComponent(`Hola, quiero pedir el producto: *${product.name}* (${product.size}) por un precio de $${product.priceUSD.toFixed(2)} / Bs. ${priceVES}`);
+                const linkWS = `https://wa.me/${WHATSAPP_PHONE}?text=${textWS}`;
+
+                const cardHTML = `
+                    <div class="product-card">
+                        <div class="img-wrapper" onclick="openModal('${product.image}')">
+                            ${product.isTester ? '<span class="badge-tester">Tester</span>' : ''}
+                            <button class="favorite-btn" onclick="event.stopPropagation(); this.classList.toggle('active')">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                            <img src="${product.image}" alt="${product.name}" class="product-img">
+                        </div>
+                        
+                        <div class="product-name">${product.name}</div>
+                        
+                        <div class="tags-container">
+                            <span class="pill-tag">${product.size}</span>
+                            <span class="pill-tag">ENVÍO GRATIS</span>
+                        </div>
+
+                        <div class="price-container">
+                            <span class="price-usd">$${product.priceUSD.toFixed(2)}</span>
+                            <span class="badge-bcv-tag">BCV</span>
+                        </div>
+                        <div class="price-ves">≈ Bs. ${priceVES} VES</div>
+
+                        <a href="${linkWS}" target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> PEDIR POR WHATSAPP
+                        </a>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        // Modal de Visualización de Imágenes
+        function openModal(imgSrc) {
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('imageModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        // Inicializar al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchBCVRate();
+        });
+    </script>
+</body>
+</html>
